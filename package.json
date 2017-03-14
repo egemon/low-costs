@@ -1,0 +1,17 @@
+{
+  "name": "low-costs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "es6-promise": "^4.1.0",
+    "isomorphic-fetch": "^2.2.1",
+    "moment": "^2.17.1",
+    "querystring": "^0.2.0"
+  }
+}
