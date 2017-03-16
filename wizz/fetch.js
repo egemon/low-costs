@@ -12,8 +12,18 @@ module.exports = {
   getAllFlightsFromTo (from, to, startTime, endTime, priceType) {
     return wrappedFetch(WIZZ_URL, headers, "POST", {
       flightList:[
-        {departureStation: from, arrivalStation: to, from: startTime, to: endTime},
-        {departureStation: to, arrivalStation: from, from: startTime, to: endTime}
+        {
+          arrivalStation: to,
+          departureStation: from,
+          from: startTime,
+          to: endTime
+        },
+        {
+          arrivalStation: from,
+          departureStation: to,
+          from: startTime,
+          to: endTime
+        }
       ],
       priceType
     }).then((data) => {

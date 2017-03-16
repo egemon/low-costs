@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "debug": "node --inspect --debug-brk index.js"
   },
   "author": "",
   "license": "ISC",
@@ -16,5 +17,8 @@
     "lodash": "^4.17.4",
     "moment": "^2.17.1",
     "querystring": "^0.2.0"
+  },
+  "devDependencies": {
+    "winston": "^2.3.1"
   }
 }
