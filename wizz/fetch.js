@@ -1,17 +1,22 @@
 const wrappedFetch = require('../common/wrapped-fetch').wrappedFetch;
 const WIZZ_URL = 'https://be.wizzair.com/4.1.0/Api/search/timetable';
+const WIZZ_URL_SEARCH = 'https://be.wizzair.com/4.1.0/Api/search/search';
+const WIZZ_URL_CONNECTIONS = 'https://be.wizzair.com/4.1.0/Api/asset/map?languageCode=en-gb';
 const headers = require('./headers');
 const convertWizzData = require('./converter').convertWizzData;
-const payload = {
-  flightList:[
-    {departureStation: "IEV", arrivalStation: "LCA", from: "2017-03-14", to: "2017-04-30"},
-    {departureStation: "LCA", arrivalStation: "IEV", from: "2017-03-14", to: "2017-04-30"}
-  ],
-  priceType : "wdc"
-};
+
 module.exports = {
-  makeRequest (from, to, when) {
-    return wrappedFetch(WIZZ_URL, headers, "POST", payload).then((data) => {
+  getAllConnections() {
+    return wrappedFetch(WIZZ_URL_CONNECTIONS, "GET").then(data => data.cities);
+  },
+  getAllFlightsFromTo (from, to, startTime, endTime, priceType) {
+    return wrappedFetch(WIZZ_URL, headers, "POST", {
+      flightList:[
+        {departureStation: from, arrivalStation: to, from: startTime, to: endTime},
+        {departureStation: to, arrivalStation: from, from: startTime, to: endTime}
+      ],
+      priceType
+    }).then((data) => {
       return Promise.resolve(convertWizzData([].concat(data.outboundFlights || []).concat(data.returnFlights  || [])));
     });
   }

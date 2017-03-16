@@ -7,6 +7,6 @@ headers.append("content-length", "210");
 headers.append("content-type", "application/json");
 headers.append("origin", "https://wizzair.com");
 headers.append("pragma", "no-cache");
-headers.append("referer", "https://wizzair.com/en-gb/information-and-services/destinations/timetable");
+headers.append("referer", "https://wizzair.com");
 
 module.exports = headers;

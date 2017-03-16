@@ -5,8 +5,8 @@ module.exports = {
         from: flight.departureStation,
         to: flight.arrivalStation,
         when: flight.departureDates[0],
-        price: flight.price.amount,
-        currency: flight.price.currencyCode
+        price: flight.price && flight.price.amount,
+        currency: flight.price && flight.price.currencyCode
       }
     });
   }
