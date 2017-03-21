@@ -3,3 +3,4 @@ node_modules/
 results/
 logs/
 log.txt
+common/db/.db-creds.js

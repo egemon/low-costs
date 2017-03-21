@@ -1,13 +1,15 @@
 const convertRates = require('../data/rates').convertRates;
+const moment = require('moment');
 
 module.exports = {
   convertWizzData (wizzFligths) {
     return wizzFligths.map((flight) => {
       return {
-        from: flight.departureStation,
-        to: flight.arrivalStation,
-        when: flight.departureDates[0],
-        price: flight.price ? convertRates(flight.price) : 'unknown'
+        departureairport: flight.departureStation,
+        destinationairport: flight.arrivalStation,
+        departuretime: moment(flight.departureDates[0]).valueOf(),
+        cost: flight.price ? convertRates(flight.price) : 'unknown',
+        requesttime: moment().valueOf()
       }
     });
   }

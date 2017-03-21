@@ -5,7 +5,6 @@ const fs = require('fs');
 const _ = require('lodash');
 const wizz = require('./wizz/fetch');
 const allAnyway = require('./common/helpers').allAnyway;
-// const rolloverFailed = require('./common/helpers').rolloverFailed;
 const START_DATE = "2017-03-24";
 const END_DATE = "2017-12-31";
 const BANCH_SIZE = 100;
